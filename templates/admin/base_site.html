@@ -1,0 +1,149 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block title %} Сибирский Лицей | Админ-панель {% endblock title %}
+<link rel="shortcut icon" type="image/png" href="{% static 'blog/img/favicon.ico' %}"/>
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">{% block siteheader %}<img src="http://127.0.0.1:8000/static/blog/img/logo.png" width="35px" class="admin-logo">Админ панель сайта Сибирского Лицея {% endblock siteheader %}</a></h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
+
+{% block extrastyle %}
+    <style>
+    div#header {
+        background: white;
+    }
+
+    #branding h1, #branding h1 a:link, #branding h1 a:visited {
+        color: #495464;
+    }
+
+    div#user-tools {
+        color: #495464;
+    }
+
+    #content-related .module h2 {
+        background: white;
+        padding: 16px;
+        margin-bottom: 16px;
+        border-bottom: 1px solid var(--hairline-color);
+        font-size: 18px;
+        color: #495464;
+        border-radius: 6px;
+    }
+
+    .module h2, .module caption, .inline-group h2 {
+        margin: 0;
+        padding: 8px;
+        font-weight: 400;
+        font-size: 13px;
+        text-align: left;
+        background: #f8f8f8;
+        color: #495464;
+    }
+
+    div.breadcrumbs {
+        background: white;
+        padding: 10px 40px;
+        border: none;
+        color: #495464;
+        text-align: left;
+        margin-top: 2px;
+    }
+    :root {
+        --selected-row: white;
+    }
+
+    #nav-sidebar .current-app .section:link, #nav-sidebar .current-app .section:visited {
+        color: #495464;
+        font-weight: bold;
+    }
+
+    div#header {
+        background: white;
+        border-radius: 6px;
+        margin: 10px;
+    }
+
+    body {
+        background: #f2f5f8;
+    }
+
+    div#content-related {
+        border-radius: 6px;
+    }
+
+    caption {
+        border-radius: 6px;
+    }
+
+    * {
+        border-radius: 6px;
+        color: #495464;
+    }
+
+    a:visited {
+        color: #495464;
+    }
+
+    a {
+        color: #495464;
+    }
+
+    #branding h1, #branding h1 a:link, #branding h1 a:visited {
+        color: #495464;
+    }
+
+    div#user-tools {
+        color: #495464;
+    }
+
+    #header a:link, #header a:visited {
+        color: #495464;
+    }
+
+    td, th {
+        border: none;
+    }
+
+    a.section:link, a.section:visited {
+        color: #495464;
+        text-decoration: none;
+    }
+
+    tr:nth-child(odd), .row-form-errors {
+        background: white;
+    }
+
+    div.breadcrumbs a {
+        color: #495464;
+    }
+
+    tr:nth-child(even), tr:nth-child(even) .errorlist, tr:nth-child(odd) + .row-form-errors, tr:nth-child(odd) + .row-form-errors .errorlist {
+        background: white;
+    }
+
+    #content-related .module h2 {
+        background: white;
+        padding: 16px;
+        margin-bottom: 16px;
+        border-bottom: none;
+        font-size: 18px;
+        color: #495464;
+        border-radius: 6px;
+    }
+
+    img.admin-logo {
+        position: relative;
+        right: 15px;
+        bottom: 3px;
+    }
+
+    .login #header h1 a {
+        color: #495464;
+        font-size: 16px;
+    }
+    </style>
+{% endblock extrastyle %}

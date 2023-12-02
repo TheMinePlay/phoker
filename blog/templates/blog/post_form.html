@@ -1,0 +1,22 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    {% if user.is_authenticated and user.is_staff %}
+        <div class="content-section">
+            <form method="POST">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4 n"><strong>Новостная запись</strong></legend>
+                    {{ form|crispy }}
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-outline-info" type="submit">Сохранить</button>
+                </div>
+            </form>
+        </div>
+    {% else %}
+        <i class='bx bx-confused icon klass'></i>
+        <h1 class="error-title"> У вас нет доступа к этой странице </h1>
+    {% endif %}
+
+{% endblock content %}

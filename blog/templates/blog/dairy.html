@@ -1,0 +1,138 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% block title %} Тестирование {% endblock title %}
+{% block content %}
+    <div class="subjects-lisst">
+        <table>
+            <tr>
+                <td colspan="3" > <p class="date td"> Понедельник 10 января </p> </td>
+            </tr>
+
+            <tr>
+                <td> <p class="subject-number td"> 0 </p> </td>
+                <td> <p class="subject td"> Русский </p> </td>
+                <td> <a class="mark td" href="#">ОП</a> </td>
+            </tr>
+            <tr>
+                <td> <p class="subject-number td"> 1 </p> </td>
+                <td> <p class="subject td"> Русский </p> </td>
+                <td> <a class="mark td" href="#">4</a> </td>
+            </tr>
+            <tr>
+                <td> <p class="subject-number td"> 2 </p> </td>
+                <td> <p class="subject td"> Математика </p> </td>
+                <td> <a class="mark td" href="#">3</a> </td>
+            </tr>
+            <tr>
+                <td> <p class="subject-number td"> 3 </p> </td>
+                <td> <p class="subject td"> Физ-ра </p> </td>
+                <td> <a class="mark td" href="#">2</a> </td>
+            </tr>
+        </table>
+
+        <table>
+            <tr>
+                <td colspan="3" > <p class="date td"> Вторник 11 января </p> </td>
+            </tr>
+
+            <tr>
+                <td> <p class="subject-number td"> 0 </p> </td>
+                <td> <p class="subject td"> Русский </p> </td>
+                <td> <a class="mark td" href="#">5</a> </td>
+            </tr>
+            <tr>
+                <td> <p class="subject-number td"> 1 </p> </td>
+                <td> <p class="subject td"> Русский </p> </td>
+                <td> <a class="mark td" href="#">5</a> </td>
+            </tr>
+            <tr>
+                <td> <p class="subject-number td"> 2 </p> </td>
+                <td> <p class="subject td"> Математика </p> </td>
+                <td> <a class="mark td" href="#">5</a> </td>
+            </tr>
+            <tr>
+                <td> <p class="subject-number td"> 3 </p> </td>
+                <td> <p class="subject td"> Физ-ра </p> </td>
+                <td> <a class="mark td" href="#">5</a> </td>
+            </tr>
+        </table>
+
+        <table>
+            <tr>
+                <td colspan="3" > <p class="date td"> Среда 12 января </p> </td>
+            </tr>
+
+            <tr>
+                <td> <p class="subject-number td"> 0 </p> </td>
+                <td> <p class="subject td"> Русский </p> </td>
+                <td> <a class="mark td" href="#">5</a> </td>
+            </tr>
+            <tr>
+                <td> <p class="subject-number td"> 1 </p> </td>
+                <td> <p class="subject td"> Русский </p> </td>
+                <td> <a class="mark td" href="#">5</a> </td>
+            </tr>
+            <tr>
+                <td> <p class="subject-number td"> 2 </p> </td>
+                <td> <p class="subject td"> Математика </p> </td>
+                <td> <a class="mark td" href="#">5</a> </td>
+            </tr>
+            <tr>
+                <td> <p class="subject-number td"> 3 </p> </td>
+                <td> <p class="subject td"> Физ-ра </p> </td>
+                <td> <a class="mark td" href="#">5</a> </td>
+            </tr>
+        </table>
+    </div>
+{% endblock content %}
+
+{% block script %}
+    let mark = document.querySelector('a.mark.td');
+
+    if (mark.textContent == '3') {
+        mark.style.background = '#ffd400';
+    } else if (mark.textContent == '2' || mark.textContent == '1') {
+        mark.style.background = 'red';
+    } else if (mark.textContent == '5' || mark.textContent == '4') {
+        mark.style.background = '#3cdf96';
+    } else {
+        mark.style.background = 'var(--sidebar-color)';
+        mark.style.color = 'var(--text-color)';
+    }
+{% endblock script %}
+
+{% block style %}
+    p.td {
+        background: var(--sidebar-color);
+        border-radius: 6px;
+        padding: 3px 15px 3px 15px;
+        font-size: 20px;
+    }
+
+    .subject {
+        text-align: center;
+        color: var(--text-color);
+    }
+
+    a.mark {
+        background: var(--primary-color);
+        color: white;
+        border-radius: 6px;
+        padding: 3px 15px 3px 15px;
+        font-size: 20px;
+    }
+
+    p.date {
+        font-weight: bold;
+        text-align: center;
+        color: var(--text-color);
+    }
+
+    p.subject {
+        width: 300px;
+    }
+
+    p.subject-number.td {
+        color: var(--text-color);
+    }
+{% endblock style %}

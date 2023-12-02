@@ -1,0 +1,26 @@
+﻿{% extends "blog/base.html" %}
+{% load static %}
+{% block title %} Главная {% endblock title %}
+{% block content %}
+    <div class="first-block">
+
+    </div>
+{% endblock content %}
+
+{% block style %}
+    p {
+        margin-bottom: 15px;
+    }
+
+    div.main-text {
+        background: var(--sidebar-color);
+        padding: 0px 15px 3px 15px;
+        border-radius: 6px;
+        margin-top: 15px;
+    }
+
+    img.image {
+        border-radius: 6px;
+        margin-left: -10px;
+    }
+{% endblock style %}

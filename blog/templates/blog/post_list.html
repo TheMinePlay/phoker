@@ -1,0 +1,41 @@
+{% extends "blog/base.html" %}
+{% block title %} Поиск {% endblock title %}
+{% block content %}
+    {% for post in posts %}
+        <article class="media content-section">
+          <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
+          <div class="media-body">
+            <div class="article-metadata">
+                <a class="mr-2" href="{% url 'user-posts' post.author.username %}"><strong class="auth-title">{{ post.author }}</strong></a>
+              <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+            </div>
+              <p class="tittle"> <strong> <a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a> </strong> </p>
+            <div class="article-content">{{ post.content|safe }}</div>
+          </div>
+        </article>
+    {% endfor %}
+    <div class="pagination justify-content-center">
+    {% if is_paginated %}
+
+      {% if page_obj.has_previous %}
+
+        <a class="btn btn-outline-info mb-4 mr-1" href="?page=1"><strong>Первая</strong></a>
+        <a class="btn btn-outline-info mb-4 mr-1" href="?page={{ page_obj.previous_page_number }}"><strong>Предыдущая</strong></a>
+      {% endif %}
+
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <a class="btn btn-info mb-4 mr-1" href="?page={{ num }}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+          <a class="btn btn-outline-info mb-4 mr-1" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+      {% endfor %}
+
+      {% if page_obj.has_next %}
+        <a class="btn btn-outline-info mb-4 mr-1" href="?page={{ page_obj.next_page_number }}"><strong>Следующая</strong></a>
+        <a class="btn btn-outline-info mb-4 mr-1" href="?page={{ page_obj.paginator.num_pages }}"><strong>Последняя</strong></a>
+      {% endif %}
+
+    {% endif %}
+  </div>
+{% endblock content %}

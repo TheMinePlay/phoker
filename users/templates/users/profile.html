@@ -1,0 +1,76 @@
+{% extends "blog/base.html" %}
+{% block title %} Профиль {% endblock title %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+      <div class="media">
+        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+        <div class="media-body">
+          <h2 class="account-heading">{{ user.username }}</h2>
+          <p class="text-secondary">{{ user.email }}</p>
+        </div>
+      </div>
+       <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <fieldset class="form-group">
+              <legend class="border-bottom mb-4"><strong>Ваш профиль:</strong></legend>
+              {{ u_form|crispy }}
+              {{ p_form|crispy }}
+          </fieldset>
+          <div class="form-group">
+              <input type="submit" value="Сохранить" class="default" name="_save">
+          </div>
+      </form>
+    </div>
+{% endblock content %}
+
+{% block script %}
+        let demo2 = document.querySelector('div#div_id_email.form-group label');
+        demo2.textContent = 'Почта*';
+
+        let demo3 = document.querySelector('div#div_id_image.form-group label');
+        demo3.textContent = 'Изображение*';
+{% endblock script %}
+
+{% block style %}
+    fieldset.form-group {
+        border: none;
+        padding-left: 15px;
+        height: 14.7em;
+    }
+
+    input#id_username {
+        background: var(--primary-color-light);
+        border-radius: 4px;
+        border: none;
+        color: var(--text-color);
+        padding-left: 15px;
+        font-size: 17px;
+        width: 230px;
+        height: 35px;
+    }
+
+    input#id_email {
+        background: var(--primary-color-light);
+        color: var(--text-color);
+        border-radius: 4px;
+        border: none;
+        padding-left: 15px;
+        font-size: 17px;
+        width: 230px;
+        height: 35px;
+    }
+
+    input.default {
+        background: var(--primary-color-light);
+        color: var(--text-color);
+        border-radius: 7px;
+        border: none;
+        font-size: 17px;
+        position: relative;
+        bottom: 45px;
+        left: 15px;
+        padding: 5px 15px 5px 15px;
+        height: 35px;
+    }
+{% endblock style %}
